@@ -11,7 +11,7 @@ class CircleAreaCubitView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sworup Circle Area Calculator'),
+        title: const Text('Suyogya Circle Area Calculator'),
         centerTitle: true,
       ),
       body: Padding(
