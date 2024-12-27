@@ -11,7 +11,7 @@ class CircleAreaCubitView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Suyogya Circle Area Calculator'),
+        title: const Text('Suyogya Circle Calculator'),
         centerTitle: true,
       ),
       body: Padding(
@@ -34,17 +34,32 @@ class CircleAreaCubitView extends StatelessWidget {
                   context.read<AreaOfCircleCubit>().calculateArea(radius);
                 }
               },
-              child: const Text('Calculate Area'),
+              child: const Text('Calculate'),
             ),
             const SizedBox(height: 16),
-            BlocBuilder<AreaOfCircleCubit, double>(
-              builder: (context, area) {
-                return Text(
-                  'Area: ${area.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+            BlocBuilder<AreaOfCircleCubit, Map<String, double>>(
+              builder: (context, state) {
+                final area = state["area"] ?? 0;
+                final diameter = state["diameter"] ?? 0;
+
+                return Column(
+                  children: [
+                    Text(
+                      'Area: ${area.toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Diameter: ${diameter.toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 );
               },
             ),
